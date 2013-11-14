@@ -78,4 +78,25 @@ describe BracketErrorSuggestion do
     end
   end
 
+
+  context :disable do
+
+    context Hash do
+      it "show all suggestions without access in disable block" do
+        BracketErrorSuggestion.enable do
+          tree[:foo1][:bar3]
+          BracketErrorSuggestion.disable do
+            tree[:foo1][:bar4]
+          end
+          msg = "undefined method `[]' for nil:NilClass, maybe it attempted to access: " + [
+            "<Hash>[:foo1][:bar2][:baz2] but <Hash>[:foo1][:bar2] is nil",
+            "<Hash>[:foo1][:bar3][:baz2] but <Hash>[:foo1][:bar3] is nil"
+          ].join(", ")
+          expect{ tree[:foo1][:bar2][:baz2] }.to raise_error(NoMethodError, msg)
+        end
+      end
+    end
+  end
+
+
 end

@@ -20,8 +20,17 @@ module BracketErrorSuggestion
     end
 
     def disable
-      @enabled = false
-      nil_parent_paths.clear
+      if block_given?
+        @enabled, backup = false, @enabled
+        begin
+          return yield
+        ensure
+          @enabled = backup
+        end
+      else
+        @enabled = false
+        nil_parent_paths.clear
+      end
     end
 
     def nil_parent_paths
