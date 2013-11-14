@@ -26,7 +26,7 @@ module BracketErrorSuggestion
         when nil then
           BracketErrorSuggestion.nil_parent_paths << "#{_actual_path_on_be_suggestion}[#{name.inspect}]"
         when Array, Hash then
-          r.path_on_be_suggestion = "#{_actual_path_on_be_suggestion}[#{name.inspect}]"
+          r.path_on_be_suggestion ||= "#{_actual_path_on_be_suggestion}[#{name.inspect}]"
         end
         return r
       else
