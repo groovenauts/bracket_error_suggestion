@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = BracketErrorSuggestion::VERSION
   spec.authors       = ["akima"]
   spec.email         = ["akm2000@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{suggests Hash or Array access on error with invalid key or index}
+  spec.summary       = %q{suggests Hash or Array access on error with invalid key or index}
+  spec.homepage      = "https://github.com/groovenauts/bracket_error_suggestion"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
